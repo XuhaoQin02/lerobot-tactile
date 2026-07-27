@@ -1,490 +1,247 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <meta name="description" content="A controlled real-robot study of physical tactile cues for contact-rich imitation learning.">
+  <meta name="theme-color" content="#0b6e4f">
+  <title>Which Physical Tactile Cues Matter?</title>
+  <link rel="icon" href="./static/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
 </head>
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top">LeRobot <span>× Touch</span></a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#results">Results</a>
       </div>
     </div>
+  </nav>
 
-  </div>
-</nav>
+  <main id="top">
+    <header class="hero project-hero">
+      <div class="hero-body">
+        <div class="container page-container has-text-centered">
+          <p class="eyebrow">Controlled real-robot study · LeRobot-compatible</p>
+          <h1 class="title publication-title">Which Physical Tactile Cues Matter for Contact-Rich Imitation Learning?</h1>
+          <p class="subtitle project-subtitle">A Controlled Real-Robot Study</p>
 
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
+          <div class="publication-authors" aria-label="Authors">
+            <a href="https://xuhaoqin02.github.io/">Xuhao Qin</a>,
+            <span>Xiyan Huang</span>,
+            <span>Haoyu Dong</span>,
+            <span>Xi Zhang</span>, and
+            <span>Chenxi Xiao<sup>†</sup></span>
           </div>
+          <p class="affiliation">School of Information Science and Technology, ShanghaiTech University</p>
+          <p class="author-note"><sup>†</sup> Corresponding author</p>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-            </div>
-
+          <div class="project-links">
+            <a class="project-button primary" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">
+              <span class="button-icon">PDF</span><span>Paper</span>
+            </a>
+            <a class="project-button" href="https://github.com/XuhaoQin02/lerobot-tactile" target="_blank" rel="noopener">
+              <span class="button-icon">&lt;/&gt;</span><span>Website source</span>
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
+    <section class="section compact-section" aria-label="Headline results">
+      <div class="container page-container">
+        <div class="stat-grid">
+          <article class="stat-card">
+            <strong>720</strong>
+            <span>real-robot trials</span>
+          </article>
+          <article class="stat-card accent">
+            <strong>78.9%</strong>
+            <span>aggregate success with full tactile</span>
+          </article>
+          <article class="stat-card">
+            <strong>+21.1 pts</strong>
+            <span>over vision-only aggregate success</span>
+          </article>
+          <article class="stat-card">
+            <strong>3 cues</strong>
+            <span>appearance, geometry, deformation</span>
+          </article>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
-          </p>
+    <section id="overview" class="section">
+      <div class="container page-container">
+        <div class="section-heading">
+          <span>01 · Overview</span>
+          <h2>Disentangling touch, one physical cue at a time</h2>
         </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
+        <figure class="figure-card hero-figure">
+          <img src="./static/figures/study-overview.png" alt="LeRobot-compatible visuo-tactile platform, tactile signal representations, controlled studies, and three real-robot tasks">
+          <figcaption>The same tactile stream is converted into tactile RGB, normal/depth, and marker-flow representations for matched comparisons.</figcaption>
+        </figure>
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
+        <div class="content-columns">
+          <div class="abstract-panel">
+            <h3>Abstract</h3>
+            <p>Vision-based tactile sensors capture contact appearance, geometry, indentation depth, and tangential deformation in a single image stream. Yet policies often treat these observations as ordinary images, making it difficult to identify which physical cues drive learning.</p>
+            <p>We introduce an open, LeRobot-compatible visuo-tactile platform and derive tactile RGB, normal/depth maps, and marker-flow fields from the same sensor stream. Under matched demonstrations and policy backbones, we compare cue representations, tactile encoders, and visuo-tactile fusion strategies across three contact-rich tasks.</p>
           </div>
-
+          <aside class="takeaway-panel">
+            <p class="panel-label">Main takeaway</p>
+            <blockquote>Geometry helps establish contact. Marker flow helps regulate established contact. Combining cues improves continuity across interaction stages.</blockquote>
+          </aside>
         </div>
       </div>
-    </div>
-    <!--/ Matting. -->
+    </section>
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
+    <section id="method" class="section tinted-section">
+      <div class="container page-container">
+        <div class="section-heading">
+          <span>02 · Method</span>
+          <h2>A controlled LeRobot visuo-tactile pipeline</h2>
+          <p>Every comparison shares the same demonstrations, visual observations, robot state, Diffusion Policy backbone, and training budget.</p>
         </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
+        <figure class="figure-card">
+          <img src="./static/figures/system-pipeline.png" alt="Real-system platform and controlled Diffusion Policy pipeline">
+          <figcaption>Global vision, wrist vision, robot state, and optional tactile modalities are encoded and fused before action prediction.</figcaption>
+        </figure>
+
+        <div class="cue-grid">
+          <article class="cue-card cue-rgb">
+            <span class="cue-number">01</span>
+            <h3>Tactile appearance</h3>
+            <p>Raw tactile RGB preserves local contact patterns and color changes caused by elastomer deformation.</p>
+          </article>
+          <article class="cue-card cue-geometry">
+            <span class="cue-number">02</span>
+            <h3>Contact geometry</h3>
+            <p>Surface normals and depth describe local shape and indentation of the tactile surface.</p>
+          </article>
+          <article class="cue-card cue-flow">
+            <span class="cue-number">03</span>
+            <h3>Tangential deformation</h3>
+            <p>Marker-flow fields track image-plane displacement, exposing shear and contact regulation cues.</p>
+          </article>
+        </div>
+
+        <figure class="figure-card representation-figure">
+          <img src="./static/figures/sensor-representations.png" alt="Exploded tactile sensor design and tactile RGB, depth, normal, and marker-flow examples">
+          <figcaption>Sensor construction and physically interpretable representations generated from the same observation stream.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="experiments" class="section">
+      <div class="container page-container">
+        <div class="section-heading">
+          <span>03 · Experiments</span>
+          <h2>Three tasks, three contact regimes</h2>
+          <p>The evaluation spans in-gripper adjustment, sustained tangential contact, and tight-clearance insertion.</p>
+        </div>
+
+        <div class="task-grid">
+          <article class="task-card">
+            <span>A</span>
+            <h3>Tube reorientation</h3>
+            <p>Adjust a tube inside the gripper, then insert it into a holder despite partially occluded contact.</p>
+          </article>
+          <article class="task-card">
+            <span>B</span>
+            <h3>Blackboard wiping</h3>
+            <p>Maintain stable surface contact while moving tangentially across the target region.</p>
+          </article>
+          <article class="task-card">
+            <span>C</span>
+            <h3>Peg-in-hole insertion</h3>
+            <p>Align and insert under tight clearance, where small contact errors produce jams or drops.</p>
+          </article>
+        </div>
+
+        <figure class="figure-card wide-figure">
+          <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases for three real-robot tasks">
+          <figcaption>Representative successful trajectories and cue-specific failure modes reveal stage-dependent strengths.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="results" class="section dark-section">
+      <div class="container page-container">
+        <div class="section-heading light-heading">
+          <span>04 · Results</span>
+          <h2>Full tactile is consistently strong</h2>
+          <p>Success rates are measured over 30 real-robot trials for every configuration and task.</p>
+        </div>
+
+        <div class="result-block">
+          <div class="result-copy">
+            <p class="table-kicker">Primary study</p>
+            <h3>Which physical cues matter?</h3>
+            <p>Full tactile raises aggregate success from 57.8% to 78.9%. Individual cues are task dependent, while the combined input produces the strongest or joint-strongest result on every task.</p>
           </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Input</th><th>Tube</th><th>Wiping</th><th>Peg</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Vision only</td><td>46.7%</td><td>60.0%</td><td>66.7%</td></tr>
+                <tr><td>+ Tactile RGB</td><td>73.3%</td><td>80.0%</td><td>66.7%</td></tr>
+                <tr><td>+ Normal/depth</td><td>66.7%</td><td>63.3%</td><td>70.0%</td></tr>
+                <tr><td>+ Marker flow</td><td>73.3%</td><td>76.7%</td><td>73.3%</td></tr>
+                <tr class="best-row"><td>+ Full tactile</td><td>76.7%</td><td>83.3%</td><td>76.7%</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <br/>
-        <!--/ Interpolating. -->
 
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
+        <div class="result-block secondary-result">
+          <div class="result-copy">
+            <p class="table-kicker">Secondary study</p>
+            <h3>How should touch be encoded and fused?</h3>
+            <p>With the full-tactile input fixed, cross-attention improves aggregate success by 4.4-6.7 percentage points. Encoder effects remain task dependent.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Encoder / fusion</th><th>Tube</th><th>Wiping</th><th>Peg</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ResNet · Concat.</td><td>76.7%</td><td>83.3%</td><td>76.7%</td></tr>
+                <tr><td>ResNet · Cross-Attn.</td><td>80.0%</td><td class="best-cell">90.0%</td><td class="best-cell">86.7%</td></tr>
+                <tr><td>Sparsh-DINO · Concat.</td><td>86.7%</td><td>83.3%</td><td>80.0%</td></tr>
+                <tr><td>Sparsh-DINO · Cross-Attn.</td><td class="best-cell">90.0%</td><td class="best-cell">90.0%</td><td>83.3%</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    <!--/ Concurrent Work. -->
+    </section>
 
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
+    <section class="section conclusion-section">
+      <div class="container narrow-container has-text-centered">
+        <p class="eyebrow">Conclusion</p>
+        <h2>Touch is not one signal.</h2>
+        <p>Physically interpretable tactile cues contribute at different interaction stages. Controlled evaluation makes those contributions visible and provides practical guidance for sensor, representation, and policy design.</p>
+        <a class="project-button primary" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">Read the paper</a>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
+  </main>
 
+  <footer class="footer site-footer">
+    <div class="container page-container footer-inner">
+      <p>Which Physical Tactile Cues Matter for Contact-Rich Imitation Learning?</p>
+      <p>Layout inspired by <a href="https://vict0rhu.github.io/CONTACT-Website/">CONTACT</a> and the <a href="https://nerfies.github.io/">Nerfies</a> project page.</p>
+    </div>
+  </footer>
 </body>
 </html>
