@@ -4,243 +4,186 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A controlled real-robot study of physical tactile cues for contact-rich imitation learning.">
-  <meta name="theme-color" content="#0b6e4f">
   <title>Which Physical Tactile Cues Matter?</title>
   <link rel="icon" href="./static/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
 </head>
 <body>
-  <nav class="site-nav" aria-label="Primary navigation">
-    <div class="nav-inner">
-      <a class="brand" href="#top">LeRobot <span>× Touch</span></a>
-      <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#method">Method</a>
-        <a href="#experiments">Experiments</a>
-        <a href="#results">Results</a>
-      </div>
-    </div>
-  </nav>
+  <main>
+    <header class="publication-header">
+      <div class="container page-container has-text-centered">
+        <h1 class="publication-title">Which Physical Tactile Cues Matter for Contact-Rich Imitation Learning?</h1>
+        <p class="publication-subtitle">A Controlled Real-Robot Study</p>
 
-  <main id="top">
-    <header class="hero project-hero">
-      <div class="hero-body">
-        <div class="container page-container has-text-centered">
-          <p class="eyebrow">Controlled real-robot study · LeRobot-compatible</p>
-          <h1 class="title publication-title">Which Physical Tactile Cues Matter for Contact-Rich Imitation Learning?</h1>
-          <p class="subtitle project-subtitle">A Controlled Real-Robot Study</p>
+        <div class="publication-authors" aria-label="Authors">
+          <a href="https://xuhaoqin02.github.io/">Xuhao Qin</a>,
+          <span>Xiyan Huang</span>,
+          <span>Haoyu Dong</span>,
+          <span>Xi Zhang</span>, and
+          <span>Chenxi Xiao<sup>†</sup></span>
+        </div>
+        <p class="author-info"><sup>†</sup> Corresponding author, School of Information Science and Technology, ShanghaiTech University</p>
 
-          <div class="publication-authors" aria-label="Authors">
-            <a href="https://xuhaoqin02.github.io/">Xuhao Qin</a>,
-            <span>Xiyan Huang</span>,
-            <span>Haoyu Dong</span>,
-            <span>Xi Zhang</span>, and
-            <span>Chenxi Xiao<sup>†</sup></span>
-          </div>
-          <p class="affiliation">School of Information Science and Technology, ShanghaiTech University</p>
-          <p class="author-note"><sup>†</sup> Corresponding author</p>
-
-          <div class="project-links">
-            <a class="project-button primary" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">
-              <span class="button-icon">PDF</span><span>Paper</span>
-            </a>
-            <a class="project-button" href="https://github.com/XuhaoQin02/lerobot-tactile" target="_blank" rel="noopener">
-              <span class="button-icon">&lt;/&gt;</span><span>Website source</span>
-            </a>
-          </div>
+        <div class="publication-links">
+          <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">
+            <span class="button-symbol"><i class="fas fa-file-pdf" aria-hidden="true"></i></span> PDF
+          </a>
+          <a class="link-button" href="#overview">
+            <span class="button-symbol"><i class="fas fa-play" aria-hidden="true"></i></span> Overview
+          </a>
+          <a class="link-button" href="https://github.com/XuhaoQin02/lerobot-tactile" target="_blank" rel="noopener">
+            <span class="button-symbol"><i class="fab fa-github" aria-hidden="true"></i></span> Code
+          </a>
         </div>
       </div>
     </header>
 
-    <section class="section compact-section" aria-label="Headline results">
-      <div class="container page-container">
-        <div class="stat-grid">
-          <article class="stat-card">
-            <strong>720</strong>
-            <span>real-robot trials</span>
-          </article>
-          <article class="stat-card accent">
-            <strong>78.9%</strong>
-            <span>aggregate success with full tactile</span>
-          </article>
-          <article class="stat-card">
-            <strong>+21.1 pts</strong>
-            <span>over vision-only aggregate success</span>
-          </article>
-          <article class="stat-card">
-            <strong>3 cues</strong>
-            <span>appearance, geometry, deformation</span>
-          </article>
-        </div>
+    <section class="section abstract-section">
+      <div class="container text-container">
+        <h2 class="section-title">Abstract</h2>
+        <p class="abstract-text">Vision-based tactile sensors capture multiple aspects of physical interaction within the same image stream, including contact appearance, geometry, indentation depth, and tangential deformation. However, existing visuo-tactile policies often process tactile observations as ordinary images, making it difficult to determine which physical cues actually contribute to policy learning. We present a controlled real-robot study that isolates physically interpretable tactile signals using an open, LeRobot-compatible visuo-tactile platform. From the same tactile stream, we derive tactile RGB images, normal/depth maps, and marker-flow fields. Under identical demonstrations and policy backbones, we compare individual and combined tactile cues, tactile encoders, and visuo-tactile fusion strategies across three contact-rich manipulation tasks. Across 720 real-robot trials, full tactile improves aggregate success from 57.8% to 78.9%. Our results suggest that normal/depth cues support contact establishment, marker flow supports established-contact regulation, and combining cues improves continuity across interaction stages.</p>
       </div>
     </section>
 
-    <section id="overview" class="section">
+    <section id="overview" class="section content-section">
       <div class="container page-container">
-        <div class="section-heading">
-          <span>01 · Overview</span>
-          <h2>Disentangling touch, one physical cue at a time</h2>
-        </div>
-        <figure class="figure-card hero-figure">
-          <img src="./static/figures/study-overview.png" alt="LeRobot-compatible visuo-tactile platform, tactile signal representations, controlled studies, and three real-robot tasks">
-          <figcaption>The same tactile stream is converted into tactile RGB, normal/depth, and marker-flow representations for matched comparisons.</figcaption>
+        <h2 class="section-title">Overview</h2>
+        <h3 class="section-subtitle"><strong>Physical tactile cues</strong> for contact-rich imitation learning</h3>
+        <figure class="paper-figure">
+          <img src="./static/figures/study-overview.png" alt="LeRobot-compatible visuo-tactile platform, signal representations, controlled studies, and three real-robot tasks">
+          <figcaption>We convert the same tactile observation into tactile RGB, normal/depth, and marker-flow representations, then compare cues, fusion strategies, and encoders under controlled conditions.</figcaption>
         </figure>
 
-        <div class="content-columns">
-          <div class="abstract-panel">
-            <h3>Abstract</h3>
-            <p>Vision-based tactile sensors capture contact appearance, geometry, indentation depth, and tangential deformation in a single image stream. Yet policies often treat these observations as ordinary images, making it difficult to identify which physical cues drive learning.</p>
-            <p>We introduce an open, LeRobot-compatible visuo-tactile platform and derive tactile RGB, normal/depth maps, and marker-flow fields from the same sensor stream. Under matched demonstrations and policy backbones, we compare cue representations, tactile encoders, and visuo-tactile fusion strategies across three contact-rich tasks.</p>
-          </div>
-          <aside class="takeaway-panel">
-            <p class="panel-label">Main takeaway</p>
-            <blockquote>Geometry helps establish contact. Marker flow helps regulate established contact. Combining cues improves continuity across interaction stages.</blockquote>
-          </aside>
+        <div class="plain-columns three-columns">
+          <article>
+            <h3>LeRobot-compatible platform</h3>
+            <p>A unified hardware and data pipeline synchronizes global vision, wrist vision, robot state, actions, and tactile observations.</p>
+          </article>
+          <article>
+            <h3>Controlled cue study</h3>
+            <p>The same demonstrations and policy backbone isolate the contributions of appearance, geometry, and tangential deformation.</p>
+          </article>
+          <article>
+            <h3>Real-robot evaluation</h3>
+            <p>Three tasks cover in-gripper adjustment, sustained surface contact, and tight-clearance insertion.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="method" class="section tinted-section">
+    <section class="section content-section alternate-section">
       <div class="container page-container">
-        <div class="section-heading">
-          <span>02 · Method</span>
-          <h2>A controlled LeRobot visuo-tactile pipeline</h2>
-          <p>Every comparison shares the same demonstrations, visual observations, robot state, Diffusion Policy backbone, and training budget.</p>
-        </div>
-        <figure class="figure-card">
+        <h2 class="section-title">System and Policy</h2>
+        <p class="section-intro">A controlled Diffusion Policy pipeline keeps the demonstrations, visual observations, robot state, action space, and training budget fixed.</p>
+        <figure class="paper-figure">
           <img src="./static/figures/system-pipeline.png" alt="Real-system platform and controlled Diffusion Policy pipeline">
-          <figcaption>Global vision, wrist vision, robot state, and optional tactile modalities are encoded and fused before action prediction.</figcaption>
-        </figure>
-
-        <div class="cue-grid">
-          <article class="cue-card cue-rgb">
-            <span class="cue-number">01</span>
-            <h3>Tactile appearance</h3>
-            <p>Raw tactile RGB preserves local contact patterns and color changes caused by elastomer deformation.</p>
-          </article>
-          <article class="cue-card cue-geometry">
-            <span class="cue-number">02</span>
-            <h3>Contact geometry</h3>
-            <p>Surface normals and depth describe local shape and indentation of the tactile surface.</p>
-          </article>
-          <article class="cue-card cue-flow">
-            <span class="cue-number">03</span>
-            <h3>Tangential deformation</h3>
-            <p>Marker-flow fields track image-plane displacement, exposing shear and contact regulation cues.</p>
-          </article>
-        </div>
-
-        <figure class="figure-card representation-figure">
-          <img src="./static/figures/sensor-representations.png" alt="Exploded tactile sensor design and tactile RGB, depth, normal, and marker-flow examples">
-          <figcaption>Sensor construction and physically interpretable representations generated from the same observation stream.</figcaption>
+          <figcaption>Global camera, wrist camera, robot state, and tactile modalities are encoded and fused before action prediction.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="experiments" class="section">
+    <section class="section content-section">
       <div class="container page-container">
-        <div class="section-heading">
-          <span>03 · Experiments</span>
-          <h2>Three tasks, three contact regimes</h2>
-          <p>The evaluation spans in-gripper adjustment, sustained tangential contact, and tight-clearance insertion.</p>
-        </div>
-
-        <div class="task-grid">
-          <article class="task-card">
-            <span>A</span>
-            <h3>Tube reorientation</h3>
-            <p>Adjust a tube inside the gripper, then insert it into a holder despite partially occluded contact.</p>
+        <h2 class="section-title">Tactile Signal Representations</h2>
+        <div class="plain-columns cue-columns">
+          <article>
+            <span class="cue-label">01</span>
+            <h3>Tactile RGB</h3>
+            <p>Raw tactile appearance preserves local contact patterns and color changes induced by elastomer deformation.</p>
           </article>
-          <article class="task-card">
-            <span>B</span>
+          <article>
+            <span class="cue-label">02</span>
+            <h3>Normal / Depth</h3>
+            <p>Surface normals and reconstructed depth describe contact geometry and local indentation.</p>
+          </article>
+          <article>
+            <span class="cue-label">03</span>
+            <h3>Marker Flow</h3>
+            <p>Tracked marker displacement exposes tangential deformation and established-contact regulation.</p>
+          </article>
+        </div>
+        <figure class="paper-figure">
+          <img src="./static/figures/sensor-representations.png" alt="Exploded tactile sensor and tactile RGB, depth, normal, and marker-flow examples">
+          <figcaption>Sensor design and examples of physically interpretable tactile representations derived from the same stream.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section content-section alternate-section">
+      <div class="container page-container">
+        <h2 class="section-title">Real-Robot Tasks</h2>
+        <div class="plain-columns three-columns task-list">
+          <article>
+            <h3>Tube reorientation and insertion</h3>
+            <p>Adjust the tube inside the gripper and insert it into a holder despite partially occluded contact.</p>
+          </article>
+          <article>
             <h3>Blackboard wiping</h3>
             <p>Maintain stable surface contact while moving tangentially across the target region.</p>
           </article>
-          <article class="task-card">
-            <span>C</span>
+          <article>
             <h3>Peg-in-hole insertion</h3>
-            <p>Align and insert under tight clearance, where small contact errors produce jams or drops.</p>
+            <p>Align and insert under tight clearance, where small contact errors cause jamming or dropping.</p>
           </article>
         </div>
-
-        <figure class="figure-card wide-figure">
-          <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases for three real-robot tasks">
-          <figcaption>Representative successful trajectories and cue-specific failure modes reveal stage-dependent strengths.</figcaption>
+        <figure class="paper-figure">
+          <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases across three tasks">
+          <figcaption>Representative successful trajectories and cue-specific failures show how tactile cues contribute at different interaction stages.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="results" class="section dark-section">
+    <section class="section content-section results-section">
       <div class="container page-container">
-        <div class="section-heading light-heading">
-          <span>04 · Results</span>
-          <h2>Full tactile is consistently strong</h2>
-          <p>Success rates are measured over 30 real-robot trials for every configuration and task.</p>
+        <h2 class="section-title">Results</h2>
+        <h3 class="result-title">Controlled comparison of tactile representations</h3>
+        <p class="section-intro">Full tactile raises aggregate success from <strong>57.8%</strong> to <strong>78.9%</strong> and achieves the strongest or joint-strongest result on every task.</p>
+        <div class="table-scroll">
+          <table class="results-table">
+            <thead><tr><th>Input representation</th><th>Tube reorientation</th><th>Blackboard wiping</th><th>Peg insertion</th></tr></thead>
+            <tbody>
+              <tr><td>Vision only</td><td>46.7%</td><td>60.0%</td><td>66.7%</td></tr>
+              <tr><td>Vision + tactile RGB</td><td>73.3%</td><td>80.0%</td><td>66.7%</td></tr>
+              <tr><td>Vision + normal/depth</td><td>66.7%</td><td>63.3%</td><td>70.0%</td></tr>
+              <tr><td>Vision + marker flow</td><td>73.3%</td><td>76.7%</td><td>73.3%</td></tr>
+              <tr class="best-row"><td>Vision + full tactile</td><td>76.7%</td><td>83.3%</td><td>76.7%</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="result-block">
-          <div class="result-copy">
-            <p class="table-kicker">Primary study</p>
-            <h3>Which physical cues matter?</h3>
-            <p>Full tactile raises aggregate success from 57.8% to 78.9%. Individual cues are task dependent, while the combined input produces the strongest or joint-strongest result on every task.</p>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Input</th><th>Tube</th><th>Wiping</th><th>Peg</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Vision only</td><td>46.7%</td><td>60.0%</td><td>66.7%</td></tr>
-                <tr><td>+ Tactile RGB</td><td>73.3%</td><td>80.0%</td><td>66.7%</td></tr>
-                <tr><td>+ Normal/depth</td><td>66.7%</td><td>63.3%</td><td>70.0%</td></tr>
-                <tr><td>+ Marker flow</td><td>73.3%</td><td>76.7%</td><td>73.3%</td></tr>
-                <tr class="best-row"><td>+ Full tactile</td><td>76.7%</td><td>83.3%</td><td>76.7%</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="result-block secondary-result">
-          <div class="result-copy">
-            <p class="table-kicker">Secondary study</p>
-            <h3>How should touch be encoded and fused?</h3>
-            <p>With the full-tactile input fixed, cross-attention improves aggregate success by 4.4-6.7 percentage points. Encoder effects remain task dependent.</p>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Encoder / fusion</th><th>Tube</th><th>Wiping</th><th>Peg</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>ResNet · Concat.</td><td>76.7%</td><td>83.3%</td><td>76.7%</td></tr>
-                <tr><td>ResNet · Cross-Attn.</td><td>80.0%</td><td class="best-cell">90.0%</td><td class="best-cell">86.7%</td></tr>
-                <tr><td>Sparsh-DINO · Concat.</td><td>86.7%</td><td>83.3%</td><td>80.0%</td></tr>
-                <tr><td>Sparsh-DINO · Cross-Attn.</td><td class="best-cell">90.0%</td><td class="best-cell">90.0%</td><td>83.3%</td></tr>
-              </tbody>
-            </table>
-          </div>
+        <h3 class="result-title second-result">Tactile encoder and fusion strategy</h3>
+        <p class="section-intro">With full tactile fixed, cross-attention improves aggregate success by 4.4-6.7 percentage points, while encoder effects remain task dependent.</p>
+        <div class="table-scroll">
+          <table class="results-table">
+            <thead><tr><th>Encoder / fusion</th><th>Tube reorientation</th><th>Blackboard wiping</th><th>Peg insertion</th></tr></thead>
+            <tbody>
+              <tr><td>ResNet · Concatenation</td><td>76.7%</td><td>83.3%</td><td>76.7%</td></tr>
+              <tr><td>ResNet · Cross-attention</td><td>80.0%</td><td><strong>90.0%</strong></td><td><strong>86.7%</strong></td></tr>
+              <tr><td>Sparsh-DINO · Concatenation</td><td>86.7%</td><td>83.3%</td><td>80.0%</td></tr>
+              <tr><td>Sparsh-DINO · Cross-attention</td><td><strong>90.0%</strong></td><td><strong>90.0%</strong></td><td>83.3%</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
     <section class="section conclusion-section">
-      <div class="container narrow-container has-text-centered">
-        <p class="eyebrow">Conclusion</p>
-        <h2>Touch is not one signal.</h2>
-        <p>Physically interpretable tactile cues contribute at different interaction stages. Controlled evaluation makes those contributions visible and provides practical guidance for sensor, representation, and policy design.</p>
-        <a class="project-button primary" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">Read the paper</a>
+      <div class="container text-container has-text-centered">
+        <h2 class="section-title">Conclusion</h2>
+        <p>Geometry helps establish contact, marker flow helps regulate established contact, and their combination supports smoother transitions across contact-rich interaction stages.</p>
+        <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
       </div>
     </section>
   </main>
 
-  <footer class="footer site-footer">
-    <div class="container page-container footer-inner">
-      <p>Which Physical Tactile Cues Matter for Contact-Rich Imitation Learning?</p>
-      <p>Layout inspired by <a href="https://vict0rhu.github.io/CONTACT-Website/">CONTACT</a> and the <a href="https://nerfies.github.io/">Nerfies</a> project page.</p>
+  <footer class="site-footer">
+    <div class="container page-container has-text-centered">
+      <p>Website layout inspired by <a href="https://vict0rhu.github.io/CONTACT-Website/">CONTACT</a> and <a href="https://nerfies.github.io/">Nerfies</a>.</p>
     </div>
   </footer>
 </body>
