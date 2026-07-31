@@ -506,15 +506,9 @@ main { padding-top: 3.45rem; }
 }
 .site-footer a { color: #666; text-decoration: underline; }
 
-@media (min-width: 1200px) {
+@media (min-width: 1520px) {
   [id] { scroll-margin-top: 1.5rem; }
-  main,
-  .site-footer { padding-left: 220px; }
   main { padding-top: 0; }
-  main > .alternate-section {
-    margin-left: -220px;
-    padding-left: calc(220px + 1.5rem);
-  }
   .contents-sidebar {
     position: fixed;
     top: 50%;

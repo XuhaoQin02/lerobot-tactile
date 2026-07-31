@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
       link.classList.toggle('is-active', isActive);
       if (isActive) {
         link.setAttribute('aria-current', 'true');
-        if (window.innerWidth < 1200) {
+        if (window.innerWidth < 1520) {
           link.scrollIntoView({
             behavior: prefersReducedMotion ? 'auto' : 'smooth',
             block: 'nearest',
