@@ -28,13 +28,14 @@
           <span>Chenxi Xiao<sup>†</sup></span>
         </div>
         <p class="author-info"><sup>†</sup> Corresponding author, School of Information Science and Technology, ShanghaiTech University</p>
+        <p class="publication-venue">2026 IEEE International Conference on Robotics and Biomimetics (IEEE ROBIO 2026)</p>
 
         <div class="publication-links">
           <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">
             <span class="button-symbol"><i class="fas fa-file-pdf" aria-hidden="true"></i></span> PDF
           </a>
-          <a class="link-button" href="#overview">
-            <span class="button-symbol"><i class="fas fa-play" aria-hidden="true"></i></span> Overview
+          <a class="link-button" href="#video">
+            <span class="button-symbol"><i class="fas fa-video" aria-hidden="true"></i></span> Video
           </a>
           <a class="link-button" href="https://github.com/XuhaoQin02/lerobot-tactile" target="_blank" rel="noopener">
             <span class="button-symbol"><i class="fab fa-github" aria-hidden="true"></i></span> Code
@@ -46,7 +47,20 @@
     <section class="section abstract-section">
       <div class="container text-container">
         <h2 class="section-title">Abstract</h2>
-        <p class="abstract-text">Vision-based tactile sensors capture multiple aspects of physical interaction within the same image stream, including contact appearance, geometry, indentation depth, and tangential deformation. However, existing visuo-tactile policies often process tactile observations as ordinary images, making it difficult to determine which physical cues actually contribute to policy learning. We present a controlled real-robot study that isolates physically interpretable tactile signals using an open, LeRobot-compatible visuo-tactile platform. From the same tactile stream, we derive tactile RGB images, normal/depth maps, and marker-flow fields. Under identical demonstrations and policy backbones, we compare individual and combined tactile cues, tactile encoders, and visuo-tactile fusion strategies across three contact-rich manipulation tasks. Across 720 real-robot trials, full tactile improves aggregate success from 57.8% to 78.9%. Our results suggest that normal/depth cues support contact establishment, marker flow supports established-contact regulation, and combining cues improves continuity across interaction stages.</p>
+        <p class="abstract-text">Vision-based tactile sensors capture contact appearance, geometry, indentation depth, and tangential deformation within a single image stream. Yet visuo-tactile policies often process these observations as ordinary images, making it difficult to determine which physical cues contribute to policy learning. We present a controlled real-robot study using an enhanced LeRobot-compatible visuo-tactile platform. From the same tactile stream, we derive tactile RGB images, normal/depth maps, and marker-flow fields, and evaluate them under identical demonstrations and the same policy backbone. Across 720 real-robot trials, tactile perception improves aggregate success from 57.8% to 78.9%. Marker flow is the strongest individual cue overall at 74.4% and plays an important role in force regulation after contact is established. Cue-factorized encoding consistently improves performance, while cross-attention offers a lightweight fusion alternative with performance comparable to tactile-pretrained encoding.</p>
+      </div>
+    </section>
+
+    <section id="video" class="section content-section alternate-section">
+      <div class="container page-container">
+        <h2 class="section-title">Video</h2>
+        <p class="section-intro">A two-minute overview of the LeRobot-compatible platform, tactile cue representations, controlled policy study, and real-robot evaluation.</p>
+        <div class="overview-video video-shell">
+          <video controls preload="metadata" playsinline poster="./static/posters/overview.jpg">
+            <source src="./static/videos/overview/project-overview.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </section>
 
@@ -131,6 +145,35 @@
             <p>Align and insert under tight clearance, where small contact errors cause jamming or dropping.</p>
           </article>
         </div>
+        <div class="video-grid success-video-grid" aria-label="Representative successful rollouts">
+          <article class="video-card">
+            <div class="video-shell square-video">
+              <video controls preload="none" playsinline poster="./static/posters/success-tube.jpg">
+                <source src="./static/videos/success/tube-reorientation.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3>Tube reorientation</h3>
+            <p>In-gripper pose adjustment followed by insertion.</p>
+          </article>
+          <article class="video-card">
+            <div class="video-shell square-video">
+              <video controls preload="none" playsinline poster="./static/posters/success-wiping.jpg">
+                <source src="./static/videos/success/blackboard-wiping.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3>Blackboard wiping</h3>
+            <p>Sustained contact with tangential motion.</p>
+          </article>
+          <article class="video-card">
+            <div class="video-shell square-video">
+              <video controls preload="none" playsinline poster="./static/posters/success-peg.jpg">
+                <source src="./static/videos/success/peg-in-hole.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3>Peg-in-hole insertion</h3>
+            <p>Tight-clearance alignment and insertion.</p>
+          </article>
+        </div>
         <figure class="paper-figure">
           <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases across three tasks">
           <figcaption>Representative successful trajectories and cue-specific failures show how tactile cues contribute at different interaction stages.</figcaption>
@@ -138,11 +181,48 @@
       </div>
     </section>
 
+    <section id="failure-videos" class="section content-section failure-section">
+      <div class="container page-container">
+        <h2 class="section-title">Cue-Specific Failure Cases</h2>
+        <p class="section-intro">Representative failures reveal how each tactile representation supports different stages of contact-rich manipulation. Videos load only when played.</p>
+
+        <div class="failure-group">
+          <h3 class="failure-group-title">Tube reorientation and insertion</h3>
+          <div class="video-grid failure-video-grid">
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-tube-tacrgb.jpg"><source src="./static/videos/failures/tube/tacrgb.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Tactile RGB</strong><span>Jammed</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-tube-geometry.jpg"><source src="./static/videos/failures/tube/geometry.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Geometry</strong><span>Wedged</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-tube-marker.jpg"><source src="./static/videos/failures/tube/marker.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Marker flow</strong><span>Misgrasped</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-tube-full.jpg"><source src="./static/videos/failures/tube/full.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Full tactile</strong><span>Dropped</span></div></article>
+          </div>
+        </div>
+
+        <div class="failure-group">
+          <h3 class="failure-group-title">Blackboard wiping</h3>
+          <div class="video-grid failure-video-grid">
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-wiping-tacrgb.jpg"><source src="./static/videos/failures/wiping/tacrgb.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Tactile RGB</strong><span>Residual</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-wiping-geometry.jpg"><source src="./static/videos/failures/wiping/geometry.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Geometry</strong><span>Stalled</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-wiping-marker.jpg"><source src="./static/videos/failures/wiping/marker.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Marker flow</strong><span>Skewed</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-wiping-full.jpg"><source src="./static/videos/failures/wiping/full.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Full tactile</strong><span>Residual</span></div></article>
+          </div>
+        </div>
+
+        <div class="failure-group">
+          <h3 class="failure-group-title">Peg-in-hole insertion</h3>
+          <div class="video-grid failure-video-grid">
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-peg-tacrgb.jpg"><source src="./static/videos/failures/peg/tacrgb.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Tactile RGB</strong><span>Missed</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-peg-geometry.jpg"><source src="./static/videos/failures/peg/geometry.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Geometry</strong><span>Stalled</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-peg-marker.jpg"><source src="./static/videos/failures/peg/marker.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Marker flow</strong><span>Misgrasped</span></div></article>
+            <article class="video-card"><div class="video-shell"><video controls preload="none" playsinline poster="./static/posters/failure-peg-full.jpg"><source src="./static/videos/failures/peg/full.mp4" type="video/mp4"></video></div><div class="video-caption"><strong>Full tactile</strong><span>Misinserted</span></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section content-section results-section">
       <div class="container page-container">
         <h2 class="section-title">Results</h2>
         <h3 class="result-title">Controlled comparison of tactile representations</h3>
-        <p class="section-intro">Full tactile raises aggregate success from <strong>57.8%</strong> to <strong>78.9%</strong> and achieves the strongest or joint-strongest result on every task.</p>
+        <p class="section-intro">Full tactile raises aggregate success from <strong>57.8%</strong> to <strong>78.9%</strong>. Marker flow is the strongest individual cue overall at <strong>74.4%</strong>, while cue effectiveness remains task dependent.</p>
         <div class="table-scroll">
           <table class="results-table">
             <thead><tr><th>Input representation</th><th>Tube reorientation</th><th>Blackboard wiping</th><th>Peg insertion</th></tr></thead>
@@ -175,7 +255,7 @@
     <section class="section conclusion-section">
       <div class="container text-container has-text-centered">
         <h2 class="section-title">Conclusion</h2>
-        <p>Geometry helps establish contact, marker flow helps regulate established contact, and their combination supports smoother transitions across contact-rich interaction stages.</p>
+        <p>Tactile cues contribute at different interaction stages. Marker flow is particularly effective after contact is established, cue-factorized encoding improves performance, and cross-attention offers a lightweight fusion alternative with performance comparable to tactile-pretrained encoding.</p>
         <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
       </div>
     </section>
