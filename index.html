@@ -28,7 +28,6 @@
           <span>Chenxi Xiao<sup>†</sup></span>
         </div>
         <p class="author-info"><sup>†</sup> Corresponding author, School of Information Science and Technology, ShanghaiTech University</p>
-        <p class="publication-venue">2026 IEEE International Conference on Robotics and Biomimetics (IEEE ROBIO 2026)</p>
 
         <div class="publication-links">
           <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener">
@@ -47,7 +46,7 @@
     <section class="section abstract-section">
       <div class="container text-container">
         <h2 class="section-title">Abstract</h2>
-        <p class="abstract-text">Vision-based tactile sensors capture contact appearance, geometry, indentation depth, and tangential deformation within a single image stream. Yet visuo-tactile policies often process these observations as ordinary images, making it difficult to determine which physical cues contribute to policy learning. We present a controlled real-robot study using an enhanced LeRobot-compatible visuo-tactile platform. From the same tactile stream, we derive tactile RGB images, normal/depth maps, and marker-flow fields, and evaluate them under identical demonstrations and the same policy backbone. Across 720 real-robot trials, tactile perception improves aggregate success from 57.8% to 78.9%. Marker flow is the strongest individual cue overall at 74.4% and plays an important role in force regulation after contact is established. Cue-factorized encoding consistently improves performance, while cross-attention offers a lightweight fusion alternative with performance comparable to tactile-pretrained encoding.</p>
+        <p class="abstract-text">Vision-based tactile sensors capture multiple aspects of physical interaction within a single image stream, including contact appearance, geometry, indentation depth, and tangential deformation. However, existing visuo-tactile policies often directly process tactile observations as images, making it difficult to determine which physical cues contribute to policy learning. This paper presents a controlled real-robot study that compares physically interpretable tactile signals using the LeRobot platform, enhanced with our visuo-tactile perception system. From the same tactile stream, we derive tactile RGB images, normal/depth maps, and marker-flow fields, representing contact appearance, geometry, and tangential deformation, respectively. Using identical task demonstrations and the same policy backbone, we evaluate the individual and combined contributions of these tactile cues. We further compare tactile encoders and visuo-tactile fusion strategies. Evaluation across 720 real-robot trials yields four key findings: (1) tactile perception substantially improves the overall success rate from 57.8% to 78.9%, although its contribution varies across task stages; (2) marker flow is the most effective individual cue, achieving a success rate of 74.4% and playing a particularly important role in force regulation; (3) cue-factorized encoding consistently improves performance, highlighting that different physical cues require tailored processing techniques; and (4) although the effectiveness of tactile fusion is task-dependent, cross-attention offers a lightweight solution with performance comparable to that of pretrained tactile encoders.</p>
       </div>
     </section>
 
@@ -70,7 +69,7 @@
         <h3 class="section-subtitle"><strong>Physical tactile cues</strong> for contact-rich imitation learning</h3>
         <figure class="paper-figure">
           <img src="./static/figures/study-overview.png" alt="LeRobot-compatible visuo-tactile platform, signal representations, controlled studies, and three real-robot tasks">
-          <figcaption>We convert the same tactile observation into tactile RGB, normal/depth, and marker-flow representations, then compare cues, fusion strategies, and encoders under controlled conditions.</figcaption>
+          <figcaption>This work investigates how tactile signals should be represented, encoded, and fused for contact-rich imitation learning. The same tactile observation is converted into tactile RGB, normal/depth, and marker-flow representations for controlled comparisons across three real-robot manipulation tasks.</figcaption>
         </figure>
 
         <div class="plain-columns three-columns">
@@ -93,12 +92,12 @@
     <section id="system-and-policy" class="section content-section alternate-section">
       <div class="container page-container">
         <h2 class="section-title">System and Policy</h2>
-        <p class="section-intro">A controlled Diffusion Policy pipeline keeps the demonstrations, visual observations, robot state, action space, and training budget fixed.</p>
+        <p class="section-intro">A shared Diffusion Policy pipeline keeps observations, action space, policy backbone, horizons, training data, and training budget fixed across the controlled studies.</p>
         <figure class="paper-figure figure-card">
           <a href="./static/figures/system-pipeline.png" target="_blank" rel="noopener" aria-label="Open the full-resolution system and policy figure">
             <img src="./static/figures/system-pipeline.png" alt="Real-system platform and controlled Diffusion Policy pipeline" decoding="async">
           </a>
-          <figcaption>Global camera, wrist camera, robot state, and tactile modalities are encoded and fused before action prediction.</figcaption>
+          <figcaption>Overview of the LeRobot-compatible visuo-tactile system and Diffusion Policy pipeline. Tactile RGB and geometry use image encoders, marker flow uses an MLP, and wrist-camera and tactile-RGB features can optionally interact through cross-attention before multimodal fusion and action prediction.</figcaption>
         </figure>
       </div>
     </section>
@@ -128,13 +127,13 @@
             <a href="./static/figures/sensor-design.png" target="_blank" rel="noopener" aria-label="Open the full-resolution tactile sensor design figure">
               <img src="./static/figures/sensor-design.png" alt="Exploded and assembled views of the tactile sensor" loading="lazy" decoding="async">
             </a>
-            <figcaption><strong>Sensor design.</strong> Exploded and assembled views of the LeRobot-compatible tactile sensor.</figcaption>
+            <figcaption><strong>Sensor design.</strong> Exploded view of the internal components and the assembled CAD model.</figcaption>
           </figure>
           <figure class="sensor-panel sensor-panel-representations">
             <a href="./static/figures/tactile-representations.png" target="_blank" rel="noopener" aria-label="Open the full-resolution tactile representation examples">
               <img src="./static/figures/tactile-representations.png" alt="Tactile RGB, depth, normal, and marker-flow examples for scissors, screws, and a USB flash drive" loading="lazy" decoding="async">
             </a>
-            <figcaption><strong>Physical tactile cues.</strong> Tactile RGB, depth, surface normal, and marker-flow representations derived from the same sensor stream.</figcaption>
+            <figcaption><strong>Physical tactile cues.</strong> From left to right, each row shows the contact object, tactile RGB image, depth map, surface-normal map, and marker-flow field.</figcaption>
           </figure>
         </div>
       </div>
@@ -146,15 +145,15 @@
         <div class="plain-columns three-columns task-list">
           <article>
             <h3>Tube reorientation and insertion</h3>
-            <p>Adjust the tube inside the gripper and insert it into a holder despite partially occluded contact.</p>
+            <p>Adjust the pose of a tube inside the gripper and insert it into a holder while local contact changes remain partially hidden from external cameras.</p>
           </article>
           <article>
             <h3>Blackboard wiping</h3>
-            <p>Maintain stable surface contact while moving tangentially across the target region.</p>
+            <p>Maintain stable surface contact while moving tangentially across the target region, making pressure regulation and shear-related cues important.</p>
           </article>
           <article>
             <h3>Peg-in-hole insertion</h3>
-            <p>Align and insert under tight clearance, where small contact errors cause jamming or dropping.</p>
+            <p>Align and insert a peg under tight clearance, where small contact errors can cause jamming or failure.</p>
           </article>
         </div>
         <div class="video-grid success-video-grid" aria-label="Representative successful rollouts">
@@ -190,7 +189,7 @@
           <a href="./static/figures/tasks-and-failures.png" target="_blank" rel="noopener" aria-label="Open the full-resolution trajectories and failure cases figure">
             <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases across three tasks" decoding="async">
           </a>
-          <figcaption>Representative successful trajectories and cue-specific failures show how tactile cues contribute at different interaction stages.</figcaption>
+          <figcaption>Representative successful trajectories and cue-specific failure cases across the three real-robot tasks illustrate how different tactile inputs are associated with failures at different interaction stages.</figcaption>
         </figure>
       </div>
     </section>
@@ -266,45 +265,34 @@
       </div>
     </section>
 
-    <section class="section conclusion-section">
-      <div class="container page-container">
-        <div class="conclusion-heading has-text-centered">
-          <span class="conclusion-eyebrow">Conclusion</span>
-          <h2>Physical tactile cues matter—and their value depends on the interaction stage.</h2>
-          <p>Across 720 real-robot trials, tactile perception raises aggregate success from 57.8% to 78.9%, showing that contact-aware observations provide information unavailable from external vision alone.</p>
-        </div>
+    <section class="section content-section alternate-section conclusion-section">
+      <div class="container text-container conclusion-content">
+        <h2 class="section-title">Conclusion</h2>
+        <p class="conclusion-summary">This work presents a controlled real-robot comparison of physically interpretable tactile cues for contact-rich imitation learning. By deriving tactile RGB, normal/depth geometry, and marker-flow fields from the same sensor stream and evaluating them with matched demonstrations and policy settings, the study separates the contribution of physical cues from the effects of tactile encoding and visuo-tactile fusion.</p>
 
-        <div class="conclusion-metrics" aria-label="Key quantitative findings">
-          <article>
-            <strong>+21.1 pts</strong>
-            <span>Full tactile vs. vision only</span>
-            <small>57.8% → 78.9%</small>
-          </article>
-          <article>
-            <strong>74.4%</strong>
-            <span>Marker-flow success</span>
-            <small>Strongest individual cue</small>
-          </article>
-          <article>
-            <strong>+4.4–6.7 pts</strong>
-            <span>Cross-attention gain</span>
-            <small>Lightweight multimodal fusion</small>
-          </article>
-        </div>
+        <ol class="conclusion-list">
+          <li>
+            <h3>Tactile feedback provides a substantial overall benefit.</h3>
+            <p>Across 720 real-robot trials, full tactile perception achieves 71/90 successes (78.9%), compared with 52/90 (57.8%) for vision only, an aggregate improvement of 21.1 percentage points. The benefit is nevertheless task- and stage-dependent.</p>
+          </li>
+          <li>
+            <h3>Marker flow is the strongest individual tactile cue.</h3>
+            <p>Marker flow reaches 67/90 successes (74.4%) and is particularly informative for regulating force after contact has been established. The qualitative failures also show that different cues support different stages of contact establishment and regulation.</p>
+          </li>
+          <li>
+            <h3>Combining factorized cues mainly improves execution continuity.</h3>
+            <p>Full tactile exceeds marker flow by 4.4 percentage points overall and by only one successful trial in each task. Its principal benefit is smoother, more continuous transitions between contact establishment, regulation, and task completion; cue-factorized encoding also outperforms direct tactile-RGB encoding.</p>
+          </li>
+          <li>
+            <h3>Cross-attention is a lightweight but task-dependent fusion option.</h3>
+            <p>With the full-tactile input fixed, cross-attention improves aggregate success by 6.7 points with ResNet-18 and 4.4 points with Sparsh-DINO. Its performance is comparable to tactile-pretrained encoding, although encoder and fusion effects vary across tasks.</p>
+          </li>
+        </ol>
 
-        <div class="conclusion-details">
-          <article>
-            <h3>What the results show</h3>
-            <p>Marker flow is especially effective for force regulation after contact is established. Full tactile exceeds marker flow by only 4.4 points overall, with its main benefit appearing in smoother, more continuous transitions between task stages. Cue-factorized encoding also outperforms direct tactile-RGB encoding.</p>
-          </article>
-          <article>
-            <h3>Scope and next step</h3>
-            <p>Cue effectiveness and visuo-tactile fusion remain task dependent. The present study uses one vision-based tactile sensor and a parallel-jaw gripper; future work should test whether these findings generalize across sensor designs, robot embodiments, and broader contact regimes.</p>
-          </article>
-        </div>
+        <p class="conclusion-limitations"><strong>Limitations and future work.</strong> The present study is limited to one vision-based tactile sensor and a parallel-jaw gripper platform. Future work will examine whether these cue-dependent findings generalize across tactile sensor designs, robot embodiments, and broader contact regimes.</p>
 
-        <div class="has-text-centered">
-          <a class="link-button conclusion-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
+        <div class="conclusion-actions has-text-centered">
+          <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
         </div>
       </div>
     </section>
