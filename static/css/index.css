@@ -511,6 +511,10 @@ main { padding-top: 3.45rem; }
   main,
   .site-footer { padding-left: 220px; }
   main { padding-top: 0; }
+  main > .alternate-section {
+    margin-left: -220px;
+    padding-left: calc(220px + 1.5rem);
+  }
   .contents-sidebar {
     position: fixed;
     top: 50%;
