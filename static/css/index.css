@@ -330,6 +330,8 @@ a { color: var(--blue); }
 }
 .results-table th:first-child,
 .results-table td:first-child { text-align: left; }
+.results-table th:not(:first-child),
+.results-table td:not(:first-child) { white-space: nowrap; }
 .results-table th {
   border-top: 2px solid #555;
   border-bottom: 1px solid #555;
