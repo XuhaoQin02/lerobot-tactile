@@ -267,10 +267,45 @@
     </section>
 
     <section class="section conclusion-section">
-      <div class="container text-container has-text-centered">
-        <h2 class="section-title">Conclusion</h2>
-        <p>Tactile cues contribute at different interaction stages. Marker flow is particularly effective after contact is established, cue-factorized encoding improves performance, and cross-attention offers a lightweight fusion alternative with performance comparable to tactile-pretrained encoding.</p>
-        <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
+      <div class="container page-container">
+        <div class="conclusion-heading has-text-centered">
+          <span class="conclusion-eyebrow">Conclusion</span>
+          <h2>Physical tactile cues matter—and their value depends on the interaction stage.</h2>
+          <p>Across 720 real-robot trials, tactile perception raises aggregate success from 57.8% to 78.9%, showing that contact-aware observations provide information unavailable from external vision alone.</p>
+        </div>
+
+        <div class="conclusion-metrics" aria-label="Key quantitative findings">
+          <article>
+            <strong>+21.1 pts</strong>
+            <span>Full tactile vs. vision only</span>
+            <small>57.8% → 78.9%</small>
+          </article>
+          <article>
+            <strong>74.4%</strong>
+            <span>Marker-flow success</span>
+            <small>Strongest individual cue</small>
+          </article>
+          <article>
+            <strong>+4.4–6.7 pts</strong>
+            <span>Cross-attention gain</span>
+            <small>Lightweight multimodal fusion</small>
+          </article>
+        </div>
+
+        <div class="conclusion-details">
+          <article>
+            <h3>What the results show</h3>
+            <p>Marker flow is especially effective for force regulation after contact is established. Full tactile exceeds marker flow by only 4.4 points overall, with its main benefit appearing in smoother, more continuous transitions between task stages. Cue-factorized encoding also outperforms direct tactile-RGB encoding.</p>
+          </article>
+          <article>
+            <h3>Scope and next step</h3>
+            <p>Cue effectiveness and visuo-tactile fusion remain task dependent. The present study uses one vision-based tactile sensor and a parallel-jaw gripper; future work should test whether these findings generalize across sensor designs, robot embodiments, and broader contact regimes.</p>
+          </article>
+        </div>
+
+        <div class="has-text-centered">
+          <a class="link-button conclusion-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
+        </div>
       </div>
     </section>
   </main>
