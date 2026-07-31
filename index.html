@@ -90,18 +90,20 @@
       </div>
     </section>
 
-    <section class="section content-section alternate-section">
+    <section id="system-and-policy" class="section content-section alternate-section">
       <div class="container page-container">
         <h2 class="section-title">System and Policy</h2>
         <p class="section-intro">A controlled Diffusion Policy pipeline keeps the demonstrations, visual observations, robot state, action space, and training budget fixed.</p>
-        <figure class="paper-figure">
-          <img src="./static/figures/system-pipeline.png" alt="Real-system platform and controlled Diffusion Policy pipeline">
+        <figure class="paper-figure figure-card">
+          <a href="./static/figures/system-pipeline.png" target="_blank" rel="noopener" aria-label="Open the full-resolution system and policy figure">
+            <img src="./static/figures/system-pipeline.png" alt="Real-system platform and controlled Diffusion Policy pipeline" decoding="async">
+          </a>
           <figcaption>Global camera, wrist camera, robot state, and tactile modalities are encoded and fused before action prediction.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="section content-section">
+    <section id="tactile-representations" class="section content-section">
       <div class="container page-container">
         <h2 class="section-title">Tactile Signal Representations</h2>
         <div class="plain-columns cue-columns">
@@ -121,14 +123,24 @@
             <p>Tracked marker displacement exposes tangential deformation and established-contact regulation.</p>
           </article>
         </div>
-        <figure class="paper-figure">
-          <img src="./static/figures/sensor-representations.png" alt="Exploded tactile sensor and tactile RGB, depth, normal, and marker-flow examples">
-          <figcaption>Sensor design and examples of physically interpretable tactile representations derived from the same stream.</figcaption>
-        </figure>
+        <div class="sensor-figure-stack">
+          <figure class="sensor-panel sensor-panel-design">
+            <a href="./static/figures/sensor-design.png" target="_blank" rel="noopener" aria-label="Open the full-resolution tactile sensor design figure">
+              <img src="./static/figures/sensor-design.png" alt="Exploded and assembled views of the tactile sensor" loading="lazy" decoding="async">
+            </a>
+            <figcaption><strong>Sensor design.</strong> Exploded and assembled views of the LeRobot-compatible tactile sensor.</figcaption>
+          </figure>
+          <figure class="sensor-panel sensor-panel-representations">
+            <a href="./static/figures/tactile-representations.png" target="_blank" rel="noopener" aria-label="Open the full-resolution tactile representation examples">
+              <img src="./static/figures/tactile-representations.png" alt="Tactile RGB, depth, normal, and marker-flow examples for scissors, screws, and a USB flash drive" loading="lazy" decoding="async">
+            </a>
+            <figcaption><strong>Physical tactile cues.</strong> Tactile RGB, depth, surface normal, and marker-flow representations derived from the same sensor stream.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="section content-section alternate-section">
+    <section id="real-robot-tasks" class="section content-section alternate-section">
       <div class="container page-container">
         <h2 class="section-title">Real-Robot Tasks</h2>
         <div class="plain-columns three-columns task-list">
@@ -174,8 +186,10 @@
             <p>Tight-clearance alignment and insertion.</p>
           </article>
         </div>
-        <figure class="paper-figure">
-          <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases across three tasks">
+        <figure class="paper-figure figure-card">
+          <a href="./static/figures/tasks-and-failures.png" target="_blank" rel="noopener" aria-label="Open the full-resolution trajectories and failure cases figure">
+            <img src="./static/figures/tasks-and-failures.png" alt="Successful trajectories and cue-specific failure cases across three tasks" decoding="async">
+          </a>
           <figcaption>Representative successful trajectories and cue-specific failures show how tactile cues contribute at different interaction stages.</figcaption>
         </figure>
       </div>
