@@ -21,8 +21,50 @@ body {
 }
 img { display: block; max-width: 100%; }
 a { color: var(--blue); }
+[id] { scroll-margin-top: 4.5rem; }
 .page-container { max-width: 1100px !important; }
 .text-container { max-width: 900px !important; }
+
+.contents-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 40;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+main { padding-top: 3.45rem; }
+.contents-heading { display: none; }
+.contents-links {
+  display: flex;
+  gap: 0.2rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.contents-links a {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 3px solid transparent;
+  color: #666;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+.contents-links a:hover {
+  color: #263d5c;
+  background: #f2f5fa;
+}
+.contents-links a.is-active {
+  border-bottom-color: #4b77ae;
+  color: #1f3858;
+  background: #e8eef7;
+  font-weight: 700;
+}
 
 .publication-header {
   padding: 3.5rem 1.5rem 2rem;
@@ -398,6 +440,64 @@ a { color: var(--blue); }
 .conclusion-actions {
   margin-top: 2rem;
 }
+.bibtex-section { background: #fff; }
+.bibtex-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.bibtex-heading .section-title {
+  margin: 0;
+  text-align: left;
+}
+.copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid #d8d8d8;
+  border-radius: 7px;
+  color: #444;
+  background: #fff;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.copy-button:hover {
+  border-color: #aaa;
+  background: #f7f7f7;
+}
+.copy-button.is-copied {
+  border-color: #7da18a;
+  color: #315e40;
+  background: #eef7f1;
+}
+.bibtex-block {
+  margin: 1.5rem 0 0;
+  padding: 1.6rem 1.8rem;
+  overflow-x: auto;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  color: #3d3d3d;
+  background: #f7f7f7;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.83rem;
+  line-height: 1.7;
+  white-space: pre;
+}
+.bibtex-block code {
+  color: inherit;
+  font-family: inherit;
+}
+.bibtex-note {
+  margin: 0.8rem 0 0;
+  color: #777;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  font-size: 0.78rem;
+}
 .site-footer {
   padding: 1.7rem 1rem;
   color: #888;
@@ -405,6 +505,50 @@ a { color: var(--blue); }
   font-size: 0.78rem;
 }
 .site-footer a { color: #666; text-decoration: underline; }
+
+@media (min-width: 1200px) {
+  [id] { scroll-margin-top: 1.5rem; }
+  main,
+  .site-footer { padding-left: 220px; }
+  main { padding-top: 0; }
+  .contents-sidebar {
+    position: fixed;
+    top: 50%;
+    right: auto;
+    left: 16px;
+    width: 204px;
+    max-height: calc(100vh - 2rem);
+    padding: 1.2rem 0.85rem;
+    overflow-y: auto;
+    transform: translateY(-50%);
+    border: 1px solid #e5e5e5;
+    border-radius: 0 14px 14px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  .contents-heading {
+    display: block;
+    margin: 0 0 0.7rem 0.65rem;
+    color: #999;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .contents-links {
+    display: block;
+    overflow: visible;
+  }
+  .contents-links a {
+    display: block;
+    padding: 0.52rem 0.65rem;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+    border-radius: 0 7px 7px 0;
+    font-size: 0.82rem;
+    white-space: normal;
+  }
+  .contents-links a.is-active { border-left-color: #4b77ae; }
+}
 
 @media (max-width: 820px) {
   .three-columns, .cue-columns { grid-template-columns: 1fr; gap: 1.6rem; }
@@ -437,6 +581,10 @@ a { color: var(--blue); }
   .success-video-grid, .failure-video-grid { grid-template-columns: 1fr; }
   .success-video-grid { max-width: 430px; }
   .failure-group { margin-top: 3rem; }
+  .bibtex-block {
+    padding: 1rem;
+    font-size: 0.72rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

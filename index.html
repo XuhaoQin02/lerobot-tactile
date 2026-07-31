@@ -12,8 +12,25 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/navigation.js"></script>
 </head>
 <body>
+  <aside class="contents-sidebar" aria-label="Page contents">
+    <p class="contents-heading">Contents</p>
+    <nav class="contents-links">
+      <a class="is-active" href="#abstract" aria-current="true">Abstract</a>
+      <a href="#video">Video</a>
+      <a href="#overview">Overview</a>
+      <a href="#system-and-policy">System &amp; Policy</a>
+      <a href="#tactile-representations">Tactile Representations</a>
+      <a href="#real-robot-tasks">Real-Robot Tasks</a>
+      <a href="#failure-videos">Failure Cases</a>
+      <a href="#results">Results</a>
+      <a href="#conclusion">Conclusion</a>
+      <a href="#bibtex">BibTeX</a>
+    </nav>
+  </aside>
+
   <main>
     <header class="publication-header">
       <div class="container page-container has-text-centered">
@@ -43,7 +60,7 @@
       </div>
     </header>
 
-    <section class="section abstract-section">
+    <section id="abstract" class="section abstract-section">
       <div class="container text-container">
         <h2 class="section-title">Abstract</h2>
         <p class="abstract-text">Vision-based tactile sensors capture multiple aspects of physical interaction within a single image stream, including contact appearance, geometry, indentation depth, and tangential deformation. However, existing visuo-tactile policies often directly process tactile observations as images, making it difficult to determine which physical cues contribute to policy learning. This paper presents a controlled real-robot study that compares physically interpretable tactile signals using the LeRobot platform, enhanced with our visuo-tactile perception system. From the same tactile stream, we derive tactile RGB images, normal/depth maps, and marker-flow fields, representing contact appearance, geometry, and tangential deformation, respectively. Using identical task demonstrations and the same policy backbone, we evaluate the individual and combined contributions of these tactile cues. We further compare tactile encoders and visuo-tactile fusion strategies. Evaluation across 720 real-robot trials yields four key findings: (1) tactile perception substantially improves the overall success rate from 57.8% to 78.9%, although its contribution varies across task stages; (2) marker flow is the most effective individual cue, achieving a success rate of 74.4% and playing a particularly important role in force regulation; (3) cue-factorized encoding consistently outperforms direct tactile-RGB encoding, highlighting that different physical cues require tailored processing techniques; and (4) cross-attention consistently improves performance across both encoders and all three tasks, offering a lightweight solution with performance comparable to that of pretrained tactile encoders.</p>
@@ -231,7 +248,7 @@
       </div>
     </section>
 
-    <section class="section content-section results-section">
+    <section id="results" class="section content-section results-section">
       <div class="container page-container">
         <h2 class="section-title">Results</h2>
         <h3 class="result-title">Controlled comparison of tactile representations</h3>
@@ -265,7 +282,7 @@
       </div>
     </section>
 
-    <section class="section content-section alternate-section conclusion-section">
+    <section id="conclusion" class="section content-section alternate-section conclusion-section">
       <div class="container text-container conclusion-content">
         <h2 class="section-title">Conclusion</h2>
         <p class="conclusion-summary">This work presents a controlled real-robot comparison of physically interpretable tactile cues for contact-rich imitation learning. By deriving tactile RGB, normal/depth geometry, and marker-flow fields from the same sensor stream and evaluating them with matched demonstrations and policy settings, the study separates the contribution of physical cues from the effects of tactile encoding and visuo-tactile fusion.</p>
@@ -298,6 +315,26 @@
         <div class="conclusion-actions has-text-centered">
           <a class="link-button" href="./static/paper/lerobot-tactile-cues.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Read the paper</a>
         </div>
+      </div>
+    </section>
+
+    <section id="bibtex" class="section content-section bibtex-section">
+      <div class="container page-container">
+        <div class="bibtex-heading">
+          <h2 class="section-title">BibTeX</h2>
+          <button id="copy-bibtex" class="copy-button" type="button" aria-label="Copy BibTeX citation">
+            <i class="fas fa-copy" aria-hidden="true"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre class="bibtex-block"><code id="bibtex-code">@misc{qin2026physical,
+  title        = {Which Physical Tactile Cues Matter for Contact-Rich Imitation Learning? A Controlled Real-Robot Study},
+  author       = {Qin, Xuhao and Huang, Xiyan and Dong, Haoyu and Zhang, Xi and Xiao, Chenxi},
+  year         = {2026},
+  howpublished = {Project website},
+  url          = {https://xuhaoqin02.github.io/lerobot-tactile/}
+}</code></pre>
+        <p class="bibtex-note">This preliminary citation can be updated with the final venue, DOI, or arXiv identifier when available.</p>
       </div>
     </section>
   </main>
