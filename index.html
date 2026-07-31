@@ -284,8 +284,12 @@
             <p>Full tactile exceeds marker flow by only 4.4 percentage points overall and by one successful trial in each task. Its primary benefit is smoother, more continuous transitions between contact establishment, regulation, and task completion.</p>
           </li>
           <li>
-            <h3>Cue factorization and cross-attention provide distinct architectural benefits.</h3>
-            <p>Compared with direct tactile-RGB encoding, cue-factorized encoding separately processes tactile appearance, normal/depth geometry, and marker flow, and achieves better performance. Separately, with the full-tactile input fixed, cross-attention consistently improves all three tasks for both encoders, raising aggregate success by 6.7 points with ResNet-18 and 4.4 points with Sparsh-DINO. Encoder choice, by contrast, has task-dependent effects.</p>
+            <h3>Cue-factorized encoding outperforms direct tactile-RGB encoding.</h3>
+            <p>Instead of processing the tactile observation as a single RGB image, cue-factorized encoding separately processes tactile appearance, normal/depth geometry, and marker flow. This tailored treatment of different physical cues achieves better performance than direct tactile-RGB encoding.</p>
+          </li>
+          <li>
+            <h3>Cross-attention provides a robust and lightweight fusion improvement.</h3>
+            <p>With the full-tactile input fixed, cross-attention consistently improves success across all three tasks for both encoders, raising aggregate success by 6.7 points with ResNet-18 and 4.4 points with Sparsh-DINO. Its gains are stable and its performance is comparable to tactile-pretrained encoding; encoder choice, by contrast, has task-dependent effects.</p>
           </li>
         </ol>
 
